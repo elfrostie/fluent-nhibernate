@@ -147,6 +147,9 @@ namespace FluentNHibernate.Specs.Automapping
         It should_set_the_collection_s_name_to_the_property_name = () =>
             container.Collections.Single().Name.ShouldEqual(FakeMembers.IListOfStrings.Name);
 
+        It should_set_the_table_name_to_the_entity_name_and_property_name = () =>
+            container.Collections.Single().TableName.ShouldEqual("Target_" + FakeMembers.IListOfStrings.Name);
+
         It should_not_create_a_relationship_for_the_collection = () =>
             container.Collections.Single().Relationship.ShouldBeNull();
 
