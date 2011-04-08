@@ -32,7 +32,16 @@ namespace FluentNHibernate.Mapping
 
         private void EnsureGuidIdentityType()
         {
-            if (identityType != typeof(Guid) && identityType != typeof(Guid?)) throw new InvalidOperationException("Identity type must be Guid");
+            if (identityType != typeof(Guid) && identityType != typeof(Guid?)) {
+                if (typeof(NHibernate.UserTypes.IUserType).IsAssignableFrom(identityType)) {
+                    NHibernate.UserTypes.IUserType userType = (NHibernate.UserTypes.IUserType)Activator.CreateInstance(identityType);
+                    if (userType.ReturnedType != typeof(Guid) && userType.ReturnedType != typeof(Guid?)) {
+                        throw new InvalidOperationException("Identity type must be Guid");
+                    }
+                } else {
+                    throw new InvalidOperationException("Identity type must be Guid");
+                }
+            }
         }
 
         private void EnsureStringIdentityType()
