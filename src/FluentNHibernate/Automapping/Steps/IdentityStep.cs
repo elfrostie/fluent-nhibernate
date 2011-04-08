@@ -32,7 +32,7 @@ namespace FluentNHibernate.Automapping.Steps
             idMapping.Set(x => x.Name, Layer.Defaults, member.Name);
             idMapping.Set(x => x.Type, Layer.Defaults, new TypeReference(member.PropertyType));
             idMapping.Member = member;
-            idMapping.Set(x => x.Generator, Layer.Defaults, GetDefaultGenerator(member));
+            idMapping.SetDefaultValue("Generator", GetDefaultGenerator(member));
 
             SetDefaultAccess(member, idMapping);
 
