@@ -1,7 +1,7 @@
 require 'fileutils'
 gem 'albacore', '=0.2.4'
 require 'albacore'
-require 'tools/albacore/nuspec_patch'
+require './tools/albacore/nuspec_patch'
 
 def get_version
   ENV['BUILD_NUMBER'] || '1.2.0.0'
