@@ -42,9 +42,7 @@ namespace FluentNHibernate.Cfg
         {
             this.cfg = cfg;
 
-#if NH21
             this.ProxyFactoryFactory(DefaultProxyFactoryFactoryClassName);
-#endif
         }
 
         internal Configuration Configuration

@@ -42,8 +42,8 @@ namespace FluentNHibernate.Automapping.Steps
 
             mapping.ContainingEntityType = classMap.Type;
             mapping.Member = member;
-            mapping.SetDefaultValue(x => x.Name, member.Name);
-	    mapping.SetDefaultValue(x => x.TableName, Layer.Defaults, classMap.Type.Name + "_" + member.Name);
+            mapping.Set(x => x.Name, Layer.Defaults, member.Name);
+	        mapping.Set(x => x.TableName, Layer.Defaults, classMap.Type.Name + "_" + member.Name);
             
 	    SetDefaultAccess(member, mapping);
 
